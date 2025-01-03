@@ -27,11 +27,20 @@ class FlashCards():
     def close_page(self):
         self.drive.close()
 
-    def save_csv(self, name_file, list_phrases ):
-        pass
+    def save_csv(self, name_file, list_phrases):
+
+        for phrase in list_phrases:
+            new_file = open(f"{name_file}.csv",'a')
+            new_file.write(phrase+'\n')
+            new_file.close()
 
 
 flash_card = FlashCards()
+
+#this site goes to page 18
 flash_card.find_list(1,2)
+
 flash_card.close_page()
-print(flash_card.list_phrase_english)
+
+#You can use another name, by default it is "default"
+flash_card.save_csv('default',flash_card.list_phrase_english)
